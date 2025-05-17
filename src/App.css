@@ -1,12 +1,17 @@
 @layer {
-  .dashboard .top-half-bg {
+  .top-half-bg {
     border-radius: 0rem 0rem 1.25rem 1.25rem;
     background: var(--fg-color);
     /* changes with respect to screen size */
     height: var(--top-half-bg-height, 14.6875rem);
     width: 100%;
     position: fixed;
+    top: 0;
     z-index: -1;
+  }
+
+  .dashboard {
+    margin: 2.25rem 1.5rem;
   }
 
   .dashboard .line {
@@ -25,13 +30,13 @@
     align-items: center;
   }
 
-  @media (width > 29.4375rem) {
+  @media (width > 32.4375rem) {
     .dashboard {
       display: flex;
       justify-content: space-between;
     }
 
-    .dashboard .top-half-bg {
+    .top-half-bg {
       --top-half-bg-height: 15.25rem;
     }
 

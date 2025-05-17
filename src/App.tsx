@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
+import ToggleSwitch from "./components/ToggleSwitch";
 import "./App.css";
 
 function App() {
@@ -6,22 +7,25 @@ function App() {
 
   document.documentElement.setAttribute("data-theme", theme);
 
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = (selection: SetStateAction<string>) =>
+    setTheme(selection);
 
   return (
-    <div className="dashboard">
+    <>
       <div className="top-half-bg"></div>
-      <header className="dashboard-title">
-        <h1>Social Media Dashboard</h1>
-        <p>Total Followers: 23,004</p>
-      </header>
-      <div className="line"></div>
-      <div className="theme-toggle">
-        <p>Dark Mode</p>
-        {/* button tag is temporary */}
-        <button onClick={toggleTheme}>toggle</button>
+      <div className="dashboard">
+        <header className="dashboard-title">
+          <h1>Social Media Dashboard</h1>
+          <p>Total Followers: 23,004</p>
+        </header>
+        <div className="line"></div>
+        <div className="theme-toggle">
+          <p>Dark Mode</p>
+          {/* button tag is temporary */}
+          <ToggleSwitch toggleTheme={toggleTheme} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

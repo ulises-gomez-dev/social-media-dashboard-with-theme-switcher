@@ -1,0 +1,55 @@
+@layer {
+  .toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+  }
+
+  /* Hides and removes default checkmark from the visual layout 
+  while keeping it functional */
+  .toggleSwitch > input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #aeb3cb;
+    transition: 0.4s;
+    border-radius: 12rem;
+  }
+
+  /* the toggle switch knob inside the slider */
+  .slider::before {
+    content: "";
+    /* knob background-color changes when set to darkmode */
+    border-radius: 50%;
+    background: white;
+    width: 1.125rem;
+    height: 1.125rem;
+    position: absolute;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    transition: 0.4s;
+  }
+
+  /* Targets the .slider class when the checkbox is checked (+ is a sibling 
+  selector -> selects the next siblng after the input tag) */
+  .toggleSwitch > input:checked + .slider {
+    /* changes the .slider class background to indicate the toggle is "on"  */
+    background: linear-gradient(#40db82, #388fe7);
+  }
+
+  /* Shifts the toggle switch knob (.slider::before) 1.4rem along the X-axis 
+  when the checkbox is checked */
+  .toggleSwitch input:checked + .slider::before {
+    transform: translateX(1.4rem);
+  }
+}
